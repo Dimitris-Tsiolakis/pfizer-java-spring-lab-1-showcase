@@ -7,9 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class MainRunner implements CommandLineRunner {
-
     @Override
     public void run(String... args) throws Exception {
-
+        log.info("hello");
     }
 }

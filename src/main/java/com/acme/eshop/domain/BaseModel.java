@@ -1,15 +1,12 @@
 package com.acme.eshop.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter
 @Getter
+@Setter
 @ToString
-abstract public class BaseModel {
-    private long id;
+public abstract class BaseModel {
+    private Long id;
 }

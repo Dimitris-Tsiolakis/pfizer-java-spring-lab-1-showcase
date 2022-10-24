@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product extends BaseModel {
-    private String serial;
-    private String name;
+public class OrderItem extends BaseModel {
+    private Product product;
+    private Order order;
+    private Integer quantity;
     private BigDecimal price;
-    private Category category;
 }

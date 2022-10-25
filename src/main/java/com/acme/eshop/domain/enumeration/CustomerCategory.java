@@ -1,4 +1,4 @@
-package com.acme.eshop.domain;
+package com.acme.eshop.domain.enumeration;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

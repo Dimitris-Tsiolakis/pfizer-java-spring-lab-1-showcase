@@ -3,12 +3,20 @@ package com.acme.eshop.repository;
 import com.acme.eshop.domain.BaseModel;
 
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
-public class BaseRepositoryImp<T extends BaseModel> implements BaseRepository<T>{
+public abstract class BaseRepositoryImp<T extends BaseModel> implements BaseRepository<T>{
+
+    public abstract Map<Long, T> getStorage();
+    public abstract AtomicLong getSequence();
 
     @Override
     public T create(T entity) {
-        throw new UnsupportedOperationException();
+        final long id = getSequence().incrementAndGet();
+        getStorage().put(id, entity);
+        entity.setId(id);
+        return entity;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.acme.eshop.domain;
 
+import com.acme.eshop.domain.enumeration.PaymentMethod;
 import lombok.*;
 
 import java.math.BigDecimal;

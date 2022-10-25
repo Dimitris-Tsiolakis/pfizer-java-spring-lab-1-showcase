@@ -13,7 +13,7 @@ public abstract class BaseRepositoryImp<T extends BaseModel> implements BaseRepo
 
     @Override
     public T create(T entity) {
-        final long id = getSequence().incrementAndGet();
+        final long id = getSequence().getAndIncrement();
         getStorage().put(id, entity);
         entity.setId(id);
         return entity;
@@ -25,7 +25,7 @@ public abstract class BaseRepositoryImp<T extends BaseModel> implements BaseRepo
     }
 
     public void delete(T entity) {
-        //getStorage().put(entity.getId(), null);
+        getStorage().remove(entity.getId());
     }
 
     @Override

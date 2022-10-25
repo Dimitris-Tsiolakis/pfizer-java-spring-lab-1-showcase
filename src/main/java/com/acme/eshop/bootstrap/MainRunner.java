@@ -6,7 +6,9 @@ import com.acme.eshop.domain.enumeration.CustomerCategory;
 import com.acme.eshop.domain.enumeration.PaymentMethod;
 import com.acme.eshop.repository.ProductRepository;
 import com.acme.eshop.repository.ProductRepositoryImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
@@ -19,7 +21,11 @@ import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class MainRunner implements CommandLineRunner {
+
+    private final ProductRepositoryImpl productRepository;
+
     @Override
     public void run(String... args) throws Exception {
         log.info("hello");
@@ -36,12 +42,10 @@ public class MainRunner implements CommandLineRunner {
                 .price(new BigDecimal("0.8"))
                 .build();
 
-        ProductRepositoryImpl productRepository = new ProductRepositoryImpl();
-        //productRepository.create()
+        Product savedProduct = productRepository.create(p);
+        log.info("{}", savedProduct);
 
-        /*Map<String, Long> entityIdCounter = new HashMap<>();
-        AtomicLong counter = new AtomicLong(1);
-        counter.incrementAndGet()
-        Map<Long, BaseModel> productStorage = new HashMap<>();*/
+        Product savedProduct2 = productRepository.create(p2);
+        log.info("{}", savedProduct2);
     }
 }
